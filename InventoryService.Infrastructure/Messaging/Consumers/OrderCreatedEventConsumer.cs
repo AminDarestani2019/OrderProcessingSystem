@@ -1,17 +1,17 @@
-﻿using InventoryService.Application.Features.Inventory.Commands.ReserveInventory;
+using InventoryService.Application.Interfaces;
 using MassTransit;
 using Shared.Contracts;
-using MediatR;
 
 namespace InventoryService.Infrastructure.Messaging.Consumers;
 
 public class OrderCreatedEventConsumer : IConsumer<OrderCreatedEvent>
 {
-    private readonly IMediator _mediator;
+    private readonly IInventoryRepository _inventoryRepository;
 
-    public OrderCreatedEventConsumer(IMediator mediator)
+    public OrderCreatedEventConsumer(
+        IInventoryRepository inventoryRepository)
     {
-        _mediator = mediator;
+        _inventoryRepository = inventoryRepository;
     }
 
     public async Task Consume(
@@ -19,13 +19,13 @@ public class OrderCreatedEventConsumer : IConsumer<OrderCreatedEvent>
     {
         var order = context.Message;
 
-        var reserved = await _mediator.Send(
-            new ReserveInventoryCommand(
-                order.ProductId,
-                order.Quantity),
+        var result = await _inventoryRepository.ProcessOrderAsync(
+            order.OrderId,
+            order.ProductId,
+            order.Quantity,
             context.CancellationToken);
 
-        if (reserved)
+        if (result.WasReserved)
         {
             await context.Publish(
                 new InventoryReservedEvent(order.OrderId));

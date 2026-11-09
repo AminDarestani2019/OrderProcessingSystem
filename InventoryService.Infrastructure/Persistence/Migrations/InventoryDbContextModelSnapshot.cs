@@ -22,6 +22,29 @@ namespace InventoryService.Infrastructure.Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("InventoryService.Domain.ProcessedOrder", b =>
+                {
+                    b.Property<Guid>("OrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("ProcessedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("WasReserved")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("OrderId");
+
+                    b.ToTable("ProcessedOrders");
+                });
+
             modelBuilder.Entity("InventoryService.Domain.ProductInventory", b =>
                 {
                     b.Property<Guid>("Id")

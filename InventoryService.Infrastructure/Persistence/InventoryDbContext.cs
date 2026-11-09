@@ -12,4 +12,12 @@ public class InventoryDbContext : DbContext
     }
 
     public DbSet<ProductInventory> ProductInventories { get; set; }
+    public DbSet<ProcessedOrder> ProcessedOrders { get; set; }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<ProcessedOrder>()
+            .HasKey(x => x.OrderId);
+    }
 }

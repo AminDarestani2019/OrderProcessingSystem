@@ -1,5 +1,5 @@
 ﻿using InventoryService.Domain;
-
+using InventoryService.Application.Features.Inventory.Commands.ReserveInventory;
 namespace InventoryService.Application.Interfaces;
 
 public interface IInventoryRepository
@@ -17,6 +17,13 @@ public interface IInventoryRepository
         int quantity,
         CancellationToken cancellationToken = default);
 
+    Task<OrderProcessingResult> ProcessOrderAsync(
+        Guid orderId,
+        int productId,
+        int quantity,
+        CancellationToken cancellationToken = default);
+
     Task SaveChangesAsync(
         CancellationToken cancellationToken = default);
 }
+
