@@ -11,6 +11,11 @@ public interface IInventoryRepository
     Task<ProductInventory?> GetByProductIdAsync(
         int productId,
         CancellationToken cancellationToken = default);
+    
+    Task<bool> TryReserveAsync(
+        int productId,
+        int quantity,
+        CancellationToken cancellationToken = default);
 
     Task SaveChangesAsync(
         CancellationToken cancellationToken = default);

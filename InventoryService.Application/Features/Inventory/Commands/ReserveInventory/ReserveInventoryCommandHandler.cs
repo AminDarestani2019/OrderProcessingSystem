@@ -21,21 +21,9 @@ public class ReserveInventoryCommandHandler
         if (request.Quantity <= 0)
             return false;
 
-        var inventory = await _inventoryRepository.GetByProductIdAsync(
+	return await _inventoryRepository.TryReserveAsync(
             request.ProductId,
+            request.Quantity,
             cancellationToken);
-
-        if (inventory == null)
-            return false;
-
-        if (inventory.AvailableQuantity < request.Quantity)
-            return false;
-
-        inventory.AvailableQuantity -= request.Quantity;
-
-        await _inventoryRepository.SaveChangesAsync(
-            cancellationToken);
-
-        return true;
     }
 }

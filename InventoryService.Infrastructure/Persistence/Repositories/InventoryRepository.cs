@@ -37,4 +37,24 @@ public class InventoryRepository: IInventoryRepository
     {
         await _context.SaveChangesAsync(cancellationToken);
     }
+
+    public async Task<bool> TryReserveAsync(
+        int productId,
+        int quantity,
+        CancellationToken cancellationToken = default)
+    {
+        if (quantity <= 0)
+            return false;
+
+        var affectedRows = await _context.ProductInventories
+            .Where(x => x.ProductId == productId &&
+                        x.AvailableQuantity >= quantity)
+            .ExecuteUpdateAsync(
+                setters => setters.SetProperty(
+                    x => x.AvailableQuantity,
+                    x => x.AvailableQuantity - quantity),
+                cancellationToken);
+
+        return affectedRows == 1;
+    }
 }
