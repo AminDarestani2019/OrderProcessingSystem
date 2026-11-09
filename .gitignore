@@ -1,0 +1,96 @@
+﻿# Build outputs
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rtifacts/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.ide
+
+# Visual Studio Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+
+# Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+coverage/
+coverage.*
+
+# Entity Framework Core
+*.db
+*.db-shm
+*.db-wal
+
+# Local configuration and secrets
+appsettings.Local.json
+appsettings.Development.Local.json
+secrets.json
+.env
+.env.*
+!.env.example
+
+# Logs
+[Ll]ogs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Operating system
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Docker local overrides
+docker-compose.override.yml
+
+# Publish outputs
+publish/
+[Pp]ublish/
+
+# Packages and generated files
+*.cache
+GeneratedFiles/
+
+.env
+.env.*
+!.env.example
+
+# Compiled binaries
+*.dll
+*.exe
+*.pdb
+*.cache
+*.nupkg
+*.snupkg
+
+# Build directories
+[Bb]in/
+[Oo]bj/
+.vs/
+*.csproj.user

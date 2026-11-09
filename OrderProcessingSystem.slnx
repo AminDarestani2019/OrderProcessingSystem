@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/InventoryService/">
+    <Project Path="InventoryService.API/InventoryService.API.csproj" Id="c393d870-15c1-4e8a-bceb-4f7b34c96e3b" />
+    <Project Path="InventoryService.Application/InventoryService.Application.csproj" Id="c70fae1f-df11-48f4-8de3-39bba396e1a5" />
+    <Project Path="InventoryService.Domain/InventoryService.Domain.csproj" Id="c8500b61-0027-4e6e-a045-e60f9be3998b" />
+    <Project Path="InventoryService.Infrastructure/InventoryService.Infrastructure.csproj" Id="21d71e4b-5537-430c-a12f-7fd7ab2495cf" />
+  </Folder>
+  <Folder Name="/OrderService/">
+    <Project Path="OrderService.API/OrderService.API.csproj" Id="ea1fcb02-1fad-4383-9abf-64a7bd4cbc0d" />
+    <Project Path="OrderService.Application/OrderService.Application.csproj" Id="f7d0c039-1920-4c13-9fdc-656137c78b6e" />
+    <Project Path="OrderService.Domain/OrderService.Domain.csproj" Id="08d0012b-6f67-4a0e-89d1-25f78b3288da" />
+    <Project Path="OrderService.Infrastructure/OrderService.Infrastructure.csproj" Id="28bfb30e-6f0b-4b7d-a1d2-afeaa965e66e" />
+  </Folder>
+  <Folder Name="/Shared.Contracts/">
+    <Project Path="Shared.Contracts/Shared.Contracts.csproj" Id="58f13deb-5c73-4db0-9ef3-8ca8c66e7784" />
+  </Folder>
+</Solution>
